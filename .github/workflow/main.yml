@@ -1,16 +1,15 @@
-name: Build and Push .NET 6 Docker Image to AWS ECR
-
-on:
-  push:
-    branches: [ main ] 
+name: Deploy to Amazon ECR
 
 jobs:
-  build-and-push:
-    name: Build and Push to ECR
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
+        with:
+          ref: production
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -23,16 +22,19 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build .NET 6 App
-        run: |
-          dotnet restore
-          dotnet publish -c Release -o ./app
-
-      - name: Build and Push Docker Image
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: lesson-86
+          ECR_REPOSITORY: stock-site
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
+          # Build a docker container and
+          # push it to ECR so that it can
+          # be deployed to ECS.
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
