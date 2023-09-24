@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "66P2aLJcGsO9cWrrnrOnDuy2mQupyOT0vZZaQLyduAFqC7SqOQ+Hwpix1FCaNqsAy2mFDqoC1jLAq/4gfz0szQ==",
+  "success": true,
+  "projectFilePath": "/Users/diakoismail/Desktop/Deploy a Docker Dotnet6 App to AWS using ECS/SimpleApi/SimpleApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/diakoismail/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/diakoismail/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/diakoismail/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/Users/diakoismail/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/Users/diakoismail/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/Users/diakoismail/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
