@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include=".github\workflow\main.yml" />
+    <Content Include=".github\workflows\main.yml" />
   </ItemGroup>
 
 </Project>
