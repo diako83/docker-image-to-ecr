@@ -29,4 +29,11 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+    
+    
+    [HttpGet("/string")]
+    public String GetString()
+    {
+        return "Diako Detta fungerar";
+    }
 }
